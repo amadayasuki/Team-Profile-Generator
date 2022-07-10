@@ -1,19 +1,20 @@
 // Manager Template
 const manager = managerData => {
     return `
-    <div class="box name-role manager-name">
-    <h2>${managerData.getName()}</h2>
-    <h3>Role: ${managerData.getRole()}</h3>
-  </div> 
-  <div class="box employee-info">
-    <ul class="list-group">
-      <li class="list-group-item">ID: ${managerData.getId()}</li>
-      <li class="list-group-item">Email: <a href="mailto:${managerData.getEmail()}">${managerData.getEmail()}</a></li>
-      <li class="list-group-item">Office Number: ${managerData.getOfficeNumber()}</li>
-    </ul>
-  </div>
-</div>
-    `
+    <div id="${managerData.getRole()}-card" class="box card">
+      <div class="box name-role manager-name">
+        <h2>${managerData.getName()}</h2>
+        <h3>Role: ${managerData.getRole()}</h3>
+      </div> 
+      <div class="box employee-info">
+        <ul class="list-group">
+          <li class="list-group-item">ID: ${managerData.getId()}</li>
+          <li class="list-group-item">Email: <a href="mailto:${managerData.getEmail()}">${managerData.getEmail()}</a></li>
+          <li class="list-group-item">Office Number: ${managerData.getOfficeNumber()}</li>
+        </ul>
+      </div>
+    </div>
+  `
 }
 
 // Engineer Template
@@ -36,7 +37,7 @@ const engineer = engineerData => {
       </div>
     </div>
   `
-  }
+}
 
 // Intern Template
 const intern = internData => {
@@ -55,24 +56,24 @@ const intern = internData => {
       </div>
     </div>
   `
-  }
+}
 
 //Iterate Answers -> Create card for each member
 const employeesDiv = employeesArr => {
     let employeeHtml = ''
-  
-    for ( i = 0; i < employeesArr.length; i++ ) {
-      if (employeesArr[i].getRole() === "Manager"){
-        employeeHtml = employeeHtml + manager(employeesArr[i])
-      }
-      if (employeesArr[i].getRole() === "Engineer"){
-        employeeHtml = employeeHtml + engineer(employeesArr[i])
-      }
-      if (employeesArr[i].getRole() === "Intern"){
-        employeeHtml = employeeHtml + intern(employeesArr[i])
-      }
+
+    for (i = 0; i < employeesArr.length; i++) {
+        if (employeesArr[i].getRole() === "Manager") {
+            employeeHtml = employeeHtml + manager(employeesArr[i])
+        }
+        if (employeesArr[i].getRole() === "Engineer") {
+            employeeHtml = employeeHtml + engineer(employeesArr[i])
+        }
+        if (employeesArr[i].getRole() === "Intern") {
+            employeeHtml = employeeHtml + intern(employeesArr[i])
+        }
     } return employeeHtml
-  }
+}
 
 //HTML Page Template
 const template = data => {
@@ -96,5 +97,6 @@ const template = data => {
       </body>
     </html>
   `
-  }
-  
+}
+
+module.exports = template;
